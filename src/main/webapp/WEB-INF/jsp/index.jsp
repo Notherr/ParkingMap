@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<!-- jsp에서 한글 문자 인식 -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8" />
     <title>Kakao 지도 시작하기</title>
     <style>
         html, body {width:100%;height:100%;margin:0;padding:0;}
