@@ -28,14 +28,13 @@ public class RestApiController {
             BufferedReader br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8"));
 
             String returnLine;
-            result.append("<xmp>");
             while((returnLine = br.readLine()) != null) {
-                result.append(returnLine + "\n");
+                result.append(returnLine);
             }
             urlconnection.disconnect();
         }catch(Exception e){
             e.printStackTrace();
         }
-        return result+ "</xmp>";
+        return result.toString();
     }
 }
