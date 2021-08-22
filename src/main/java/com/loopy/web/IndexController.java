@@ -11,4 +11,7 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/data")
+    public String data() { return "data"; }
+
 }
