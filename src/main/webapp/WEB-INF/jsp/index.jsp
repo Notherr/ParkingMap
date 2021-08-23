@@ -44,13 +44,11 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf58f6204f96c8bac33bd7aaeb780397"></script>
 <script>
     <!-- 지도를 담을 div -->
-
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
             level: 3 // 지도의 확대 레벨
         };
-
     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
     //HTML5 geoloaction 사용
@@ -73,6 +71,16 @@
             message = 'geolocation을 사용할수 없어요..'
 
         displayMarker(locPosition, message);
+    }
+
+    let data = [
+        [37.298017889594675, 126.97102916721747, '<div style="padding:5px;">율전공영주차장</div>'],
+        [37.301098863772786, 126.97141540531281, '<div style="padding:5px;">성대역환승주차장</div>']
+    ]
+    for(let value of data) {
+        var locPosition = new kakao.maps.LatLng(value[0], value[1]),
+            message = value[2]
+        displayMarker(locPosition,message)
     }
 
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
