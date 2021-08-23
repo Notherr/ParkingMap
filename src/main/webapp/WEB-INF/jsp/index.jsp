@@ -41,7 +41,7 @@
 
 </center>
 <!-- kakao 지도 API 가져오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf58f6204f96c8bac33bd7aaeb780397"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf58f6204f96c8bac33bd7aaeb780397&libraries=clusterer"></script>
 <script>
     <!-- 지도를 담을 div -->
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -50,6 +50,13 @@
             level: 3 // 지도의 확대 레벨
         };
     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+    // 마커 클러스터러를 생성합니다
+    var clusterer = new kakao.maps.MarkerClusterer({
+        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+        minLevel: 6 // 클러스터 할 최소 지도 레벨
+    });
 
     //HTML5 geoloaction 사용
     if (navigator.geolocation) {
@@ -77,11 +84,14 @@
         [37.298017889594675, 126.97102916721747, '<div style="padding:5px;">율전공영주차장</div>'],
         [37.301098863772786, 126.97141540531281, '<div style="padding:5px;">성대역환승주차장</div>']
     ]
+    let markers = []
+
     for(let value of data) {
         var locPosition = new kakao.maps.LatLng(value[0], value[1]),
             message = value[2]
         displayMarker(locPosition,message)
     }
+    clusterer.addMarkers(markers);
 
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition, message) {
@@ -106,6 +116,8 @@
 
         // 지도 중심좌표를 접속위치로 변경합니다
         map.setCenter(locPosition);
+
+        markers.push(marker);
     }
 
     // 지도타입 컨트롤의 지도 또는 스카이뷰 버튼을 클릭하면 호출되어 지도타입을 바꾸는 함수입니다
