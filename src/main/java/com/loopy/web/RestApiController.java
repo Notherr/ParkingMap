@@ -29,7 +29,7 @@ public class RestApiController {
             urlconnection.setRequestMethod("GET"); // GET형식으로 웹서버에 요청.
 
             BufferedReader br = new BufferedReader(new InputStreamReader(urlconnection.getInputStream(), "UTF-8")); // 입력되는 스트림에 대하여 버퍼를 갖는 객체를 생성하여 효율적으로 문자를 읽어들임.
-                                                                                                                                // 한글 입력받기위해 chr단위로 받는 getInputStream 사용, 버퍼에 저장했다가 한번에 읽어들임.
+
             String returnLine;
             while((returnLine = br.readLine()) != null) {   // .readline()은 개행문자를 기준으로 끊어읽음.(개행문자 : 새줄을 표시하는 문자.)
                 result.append(returnLine);
