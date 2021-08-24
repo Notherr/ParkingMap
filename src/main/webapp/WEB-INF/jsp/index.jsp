@@ -42,6 +42,7 @@
 </center>
 <!-- kakao 지도 API 가져오기 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf58f6204f96c8bac33bd7aaeb780397&libraries=clusterer"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
     <!-- 지도를 담을 div -->
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
@@ -120,7 +121,7 @@
         markers.push(marker);
 
         // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
-        // 이벤트 리스너로는 클로저를 만들어 등록합니다
+        // 이벤트 리스너로는 클로저를 만들어 등록합니다$
         // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
         kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
         kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
@@ -164,6 +165,32 @@
             infowindow.close();
         };
     }
+
+    $( document ).ready(function() { // document의 ready 메소드를 이용하여 html 요소와 javascript 동적 실행의 순서를 보장해준다. 즉 이 안의 코드는 문서가 모두 로드되고 실행된다.
+        $.ajax({
+            url:'http://localhost:8080/apitest3',
+            type:'GET',
+            dataType:'text', // 리턴해주는 타입을 지정해줘야함
+            beforeSend:function(jqXHR) {
+                console.log("requesting ajax..");
+            },// 서버 요청 전 호출 되는 함수 return false; 일 경우 요청 중단
+            success: function(data) {
+                console.log("reguest success");
+                //console.log(JSON.parse(data));
+                let response = data.response;
+                for(let i = 0; i<length.items; i++) {
+                    var locPosition = new kakao.maps.LatLng(parseFloat(response["body"]["items"][i]["latitude"]), parseFloat(response["body"]["items"][i]["longitude"])),
+                        message = response["body"]["items"][i]["prkplceNm"]
+                    displayMarker(locPosition,message)
+                }
+                clusterer.addMarkers(markers);
+
+            },// 요청 완료 시
+            error:function(jqXHR) {
+                console.log("request failed");
+            }// 요청 실패.
+        });
+    });
 </script>
 </body>
 </html>
