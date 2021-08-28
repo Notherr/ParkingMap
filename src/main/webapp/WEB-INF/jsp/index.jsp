@@ -15,15 +15,15 @@
         .custom_typecontrol .btn {background:#fff;background:linear-gradient(#fff,  #e6e6e6);}
         .custom_typecontrol .btn:hover {background:#f5f5f5;background:linear-gradient(#f5f5f5,#e3e3e3);}
         .custom_typecontrol .btn:active {background:#e6e6e6;background:linear-gradient(#e6e6e6, #fff);}
-        .custom_typecontrol .selected_btn {color:#fff;background:#425470;background:linear-gradient(#425470, #5b6d8a);}
+        .custom_typecontrol .selected_btn {color:#fff;background:#6D92E3;background:linear-gradient(#6D92E3,#6D92E3);}
         .custom_typecontrol .selected_btn:hover {color:#fff;}
         .custom_zoomcontrol {position:absolute;top:50px;right:10px;width:36px;height:80px;overflow:hidden;z-index:1;background-color:#f5f5f5;}
         .custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}
         .custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}
         .custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}
 
-        #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-        .bg_white {background:#fff;}
+        #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:#6D92E3;z-index: 1;font-size:12px;border-radius: 10px;}
+        .menu_color1 {background:#fff;}
         #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
         #menu_wrap .option{text-align: center;}
         #menu_wrap .option p {margin:10px 0;}
@@ -46,11 +46,11 @@
             <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
         </div>
         <!-- 검색 창 div 입니다 -->
-        <div id="menu_wrap" class="bg_white">
+        <div id="menu_wrap" class="menu_color1">
             <div class="option">
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
-                        키워드 : <input type="text" id="keyword" size="15">
+                        <input type="text" id="keyword" size="15">
                         <button type="submit">검색</button>
                     </form>
                 </div>
