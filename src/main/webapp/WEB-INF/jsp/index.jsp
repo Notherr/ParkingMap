@@ -20,6 +20,13 @@
         .custom_zoomcontrol span {display:block;width:36px;height:40px;text-align:center;cursor:pointer;}
         .custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}
         .custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}
+
+        #menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
+        .bg_white {background:#fff;}
+        #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
+        #menu_wrap .option{text-align: center;}
+        #menu_wrap .option p {margin:10px 0;}
+        #menu_wrap .option button {margin-left:5px;}
     </style>
 </head>
 <body>
@@ -36,6 +43,17 @@
         <div class="custom_zoomcontrol radius_border">
             <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>
             <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
+        </div>
+        <!-- 검색 창 div 입니다 -->
+        <div id="menu_wrap" class="bg_white">
+            <div class="option">
+                <div>
+                    <form onsubmit="searchPlaces(); return false;">
+                        키워드 : <input type="text" id="keyword" size="15">
+                        <button type="submit">검색</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -126,11 +144,28 @@
     // 장소 검색 객체를 생성합니다
     var ps = new kakao.maps.services.Places();
 
+    var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+
+
     // 키워드로 장소를 검색합니다
-    ps.keywordSearch('이태원 맛집', placesSearchCB);
+    searchPlaces();
+
+    // 키워드 검색을 요청하는 함수입니다
+    function searchPlaces() {
+
+        var keyword = document.getElementById('keyword').value;
+
+        if (!keyword.replace(/^\s+|\s+$/g, '')) {
+            alert('키워드를 입력해주세요!');
+            return false;
+        }
+
+        // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        ps.keywordSearch( keyword, placesSearchCB);
+    }
 
     // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-    function placesSearchCB (data, status, pagination) {
+    function placesSearchCB (data, status) {
         if (status === kakao.maps.services.Status.OK) {
 
             // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -154,8 +189,6 @@
             map: map,
             position: new kakao.maps.LatLng(place.y, place.x)
         });
-
-        var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
         // 마커에 클릭이벤트를 등록합니다
         kakao.maps.event.addListener(marker, 'click', function() {
