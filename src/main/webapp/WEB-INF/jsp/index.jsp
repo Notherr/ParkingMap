@@ -94,6 +94,35 @@
     }
     clusterer.addMarkers(markers);
 
+    $( document ).ready(function() { // document의 ready 메소드를 이용하여 html 요소와 javascript 동적 실행의 순서를 보장해준다. 즉 이 안의 코드는 문서가 모두 로드되고 실행된다.
+        $.ajax({
+            url:'http://localhost:8080/apitest3',
+            type:'GET',
+            dataType:'text', // 리턴해주는 타입을 지정해줘야함
+            beforeSend:function(jqXHR) {
+                console.log("requesting ajax..");
+            },// 서버 요청 전 호출 되는 함수 return false; 일 경우 요청 중단
+            success: function(data) {
+                console.log("reguest success");
+                //console.log(JSON.parse(data));
+                var data = JSON.parse(data); // 반환된 데이터 형식을 다시 JSON형태로 바꿔주니 데이터 값 조회가 잘 된다.
+                // console.log(data.response.body.items[0]) // {} 는 .으로 [](배열)은 []으로 조회
+                console.log(data.response.body.items.length)
+
+                for(let i = 0; i<data.response.body.items.length; i++) {
+                    var locPosition = new kakao.maps.LatLng(parseFloat(data.response.body.items[i]['latitude']), parseFloat(data.response.body.items[i]['longitude'])),
+                        message = data.response.body.items[i]['prkplceNm']
+                    displayMarker(locPosition,message)
+                }
+                clusterer.addMarkers(markers);
+
+            },// 요청 완료 시
+            error:function(jqXHR) {
+                console.log("request failed");
+            }// 요청 실패.
+        });
+    });
+
     // 지도에 마커와 인포윈도우를 표시하는 함수입니다
     function displayMarker(locPosition, message) {
 
@@ -166,31 +195,6 @@
         };
     }
 
-    $( document ).ready(function() { // document의 ready 메소드를 이용하여 html 요소와 javascript 동적 실행의 순서를 보장해준다. 즉 이 안의 코드는 문서가 모두 로드되고 실행된다.
-        $.ajax({
-            url:'http://localhost:8080/apitest3',
-            type:'GET',
-            dataType:'text', // 리턴해주는 타입을 지정해줘야함
-            beforeSend:function(jqXHR) {
-                console.log("requesting ajax..");
-            },// 서버 요청 전 호출 되는 함수 return false; 일 경우 요청 중단
-            success: function(data) {
-                console.log("reguest success");
-                //console.log(JSON.parse(data));
-                let response = data.response;
-                for(let i = 0; i<length.items; i++) {
-                    var locPosition = new kakao.maps.LatLng(parseFloat(response["body"]["items"][i]["latitude"]), parseFloat(response["body"]["items"][i]["longitude"])),
-                        message = response["body"]["items"][i]["prkplceNm"]
-                    displayMarker(locPosition,message)
-                }
-                clusterer.addMarkers(markers);
-
-            },// 요청 완료 시
-            error:function(jqXHR) {
-                console.log("request failed");
-            }// 요청 실패.
-        });
-    });
 </script>
 </body>
 </html>
