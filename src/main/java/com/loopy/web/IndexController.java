@@ -17,4 +17,7 @@ public class IndexController {
     @GetMapping("/test")
     public String test() {return "test";}
 
+    @GetMapping("/list")
+    public String list() {return "list";}
+
 }
