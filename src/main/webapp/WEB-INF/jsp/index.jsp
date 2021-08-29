@@ -4,7 +4,6 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>어따하지</title>
     <!-- # : id , . : class -->
     <style>
         html, body {width:100%;height:100%;margin:0;padding:0;}
@@ -33,6 +32,9 @@
         #menu_wrap .list img {position: absolute;width: 31px;height: 26px;left: 10px;top: 9px;mix-blend-mode: darken;border-radius: 7px;}
 
     </style>
+    <!-- css link -->
+    <link rel="stylesheet" href="/css/font.css">
+    <title>어따하지</title>
 </head>
 <body>
 <center>

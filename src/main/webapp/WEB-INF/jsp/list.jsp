@@ -4,6 +4,8 @@
 <html>
 <head>
     <meta charset="UTF-8" />
+    <!-- css link -->
+    <link rel="stylesheet" href="/css/font.css">
     <title>어따히지</title>
 
 </head>
@@ -11,7 +13,7 @@
 <center>
 
     <img src="images/logo.png" />
-    <p>서비스를 준비 중입니다 :)</p>
+    <h1>서비스를 준비 중입니다 :)</h1>
 
 </center>
 
