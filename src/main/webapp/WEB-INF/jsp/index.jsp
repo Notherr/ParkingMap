@@ -21,7 +21,7 @@
         .custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}
         .custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}
 
-        #menu_wrap {position:absolute;top:40px;left:500px;width:361px;height: 70px;margin:10px 0 30px 10px;padding:5px;background:#6D92E3;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);font-size:12px;border-radius: 7px;overflow-y:auto;z-index: 2;}
+        #menu_wrap {position:absolute;top:40px;left:50%;width:360px;height: 70px;margin:10px 0 30px -180px;padding:5px;background:#6D92E3;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);font-size:12px;border-radius: 7px;overflow-y:auto;z-index: 2;}
         .menu_color1 {background:#fff;}
         #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
         #menu_wrap .option{text-align: center;}
@@ -34,8 +34,9 @@
         #main p{position: absolute;
             width: 210px;
             height: 40px;
-            left: 500px;
-            top: 0px;line-height: 50px;
+            left: 50%;
+            top: -30px; margin-left:-105px;line-height: 50px;
+            font-size:35px;
             text-align: center; z-index: 1;}
 
     </style>
