@@ -29,6 +29,9 @@
         #menu_wrap .option p {margin:10px 0;}
         #menu_wrap .option button {margin-left:5px;}
         #menu_wrap .option {position: absolute;width: 271px;height: 38px;left: 51px;top: 0px;background:#fff;box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);border-radius: 7px;overflow-y:auto;z-index: 1;}
+
+        #menu_wrap .list img {position: absolute;width: 31px;height: 26px;left: 10px;top: 9px;mix-blend-mode: darken;border-radius: 7px;}
+
     </style>
 </head>
 <body>
@@ -48,6 +51,11 @@
         </div>
         <!-- 검색 창 div 입니다 -->
         <div id="menu_wrap" class="menu_color1">
+            <div class="list">
+                <a href="/list">
+                    <img src="images/list.png" />
+                </a>
+            </div>
             <div class="option">
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
