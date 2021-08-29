@@ -64,7 +64,7 @@
         </div>
         <!-- 검색 창 div 입니다 -->
         <div id="menu_wrap" class="menu_color1">
-            <div class="list">
+            <div class="list">ㄴ
                 <a href="/list">
                     <img src="images/list.png" />
                 </a>
@@ -72,7 +72,7 @@
             <div class="option">
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
-                        <input type="text" id="keyword" placeholder="어따하실래요?" style="font-size:15pt; color:black;">
+                        <input type="text" id="keyword" placeholder="어따하실래요?" style="font-size:13pt; color:black;">
                         <button type="submit">찾기</button>
                     </form>
                 </div>
@@ -178,7 +178,6 @@
 
         //클라이언트에서 입력 후 버튼을 누르면 값이 여기로 넘어온다. keyword로
         var keyword = document.getElementById('keyword').value;
-        console.log(keyword)
 
         //입력안한 경우 입력해달라는 창 띄움.
         if (!keyword.replace(/^\s+|\s+$/g, '')) {
