@@ -26,7 +26,8 @@
         #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
         #menu_wrap .option{text-align: center;}
         #menu_wrap .option p {margin:10px 0;}
-        #menu_wrap .option button {margin-left:5px;}
+        #menu_wrap .option button {margin-left:35px;}
+        #keyword{border:0px;width:180px;height:30px;}
         #menu_wrap .option {position: absolute;width: 271px;height: 38px;left: 51px;top: 0px;background:#fff;box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);border-radius: 7px;overflow-y:auto;z-index: 1;}
 
         #menu_wrap .list img {position: absolute;width: 31px;height: 26px;left: 10px;top: 9px;mix-blend-mode: darken;border-radius: 7px;}
@@ -71,8 +72,8 @@
             <div class="option">
                 <div>
                     <form onsubmit="searchPlaces(); return false;">
-                        <input type="text" id="keyword" size="15">
-                        <button type="submit">검색</button>
+                        <input type="text" id="keyword" placeholder="어따하실래요?" style="font-size:15pt; color:black;">
+                        <button type="submit">찾기</button>
                     </form>
                 </div>
             </div>
