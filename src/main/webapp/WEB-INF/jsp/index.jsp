@@ -31,6 +31,13 @@
 
         #menu_wrap .list img {position: absolute;width: 31px;height: 26px;left: 10px;top: 9px;mix-blend-mode: darken;border-radius: 7px;}
 
+        #main p{position: absolute;
+            width: 210px;
+            height: 40px;
+            left: 500px;
+            top: 0px;line-height: 50px;
+            text-align: center; z-index: 1;}
+
     </style>
     <!-- css link -->
     <link rel="stylesheet" href="/css/font.css">
@@ -38,7 +45,6 @@
 </head>
 <body>
 <center>
-<h1>어따하지</h1>
     <div class="map_wrap">
         <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
         <!-- 지도타입 컨트롤 div 입니다 -->
@@ -50,6 +56,9 @@
         <div class="custom_zoomcontrol radius_border">
             <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>
             <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
+        </div>
+        <div id="main">
+            <p>어따하지</p>
         </div>
         <!-- 검색 창 div 입니다 -->
         <div id="menu_wrap" class="menu_color1">
