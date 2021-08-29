@@ -82,7 +82,7 @@
 
 </center>
 <!-- kakao 지도 API 가져오기 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf58f6204f96c8bac33bd7aaeb780397&libraries=clusterer"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bf58f6204f96c8bac33bd7aaeb780397&libraries=clusterer,services"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
     <!-- 지도를 담을 div -->
@@ -176,8 +176,11 @@
     // 키워드 검색을 요청하는 함수입니다
     function searchPlaces() {
 
+        //클라이언트에서 입력 후 버튼을 누르면 값이 여기로 넘어온다. keyword로
         var keyword = document.getElementById('keyword').value;
+        console.log(keyword)
 
+        //입력안한 경우 입력해달라는 창 띄움.
         if (!keyword.replace(/^\s+|\s+$/g, '')) {
             alert('키워드를 입력해주세요!');
             return false;
