@@ -22,12 +22,13 @@
         .custom_zoomcontrol span img {width:15px;height:15px;padding:12px 0;border:none;}
         .custom_zoomcontrol span:first-child{border-bottom:1px solid #bfbfbf;}
 
-        #menu_wrap {position:absolute;top:40px;left:500px;width:361px;height: 70px;margin:10px 0 30px 10px;padding:5px;background:#6D92E3;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);font-size:12px;border-radius: 7px;overflow-y:auto;z-index: 1;}
+        #menu_wrap {position:absolute;top:40px;left:500px;width:361px;height: 70px;margin:10px 0 30px 10px;padding:5px;background:#6D92E3;box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);font-size:12px;border-radius: 7px;overflow-y:auto;z-index: 2;}
         .menu_color1 {background:#fff;}
         #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
         #menu_wrap .option{text-align: center;}
         #menu_wrap .option p {margin:10px 0;}
         #menu_wrap .option button {margin-left:5px;}
+        #menu_wrap .option {position: absolute;width: 271px;height: 38px;left: 51px;top: 0px;background:#fff;box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);border-radius: 7px;overflow-y:auto;z-index: 1;}
     </style>
 </head>
 <body>
