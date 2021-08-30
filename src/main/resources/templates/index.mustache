@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<!-- jsp에서 한글 문자 인식 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -87,10 +85,10 @@
 <script>
     <!-- 지도를 담을 div -->
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-        mapOption = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-            level: 3 // 지도의 확대 레벨
-        };
+            mapOption = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
     var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
     // 마커 클러스터러를 생성합니다
@@ -107,17 +105,17 @@
         navigator.geolocation.getCurrentPosition(function(position){
 
             var lat = position.coords.latitude, //위도
-                lon = position.coords.longitude; //경도
+                    lon = position.coords.longitude; //경도
 
             var locPosition = new kakao.maps.LatLng(lat, lon),
-                message = '<div style="padding:5px;">내 위치~</div>';
+                    message = '<div style="padding:5px;">내 위치~</div>';
 
             displayMarker(locPosition, message);
         });
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
         var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
-            message = 'geolocation을 사용할수 없어요..'
+                message = 'geolocation을 사용할수 없어요..'
 
         displayMarker(locPosition, message);
     }
@@ -130,7 +128,7 @@
 
     for(let value of data) {
         var locPosition = new kakao.maps.LatLng(value[0], value[1]),
-            message = value[2]
+                message = value[2]
         displayMarker(locPosition,message)
     }
     clusterer.addMarkers(markers);
@@ -152,7 +150,7 @@
 
                 for(let i = 0; i<data.response.body.items.length; i++) {
                     var locPosition = new kakao.maps.LatLng(parseFloat(data.response.body.items[i]['latitude']), parseFloat(data.response.body.items[i]['longitude'])),
-                        message = data.response.body.items[i]['prkplceNm']
+                            message = data.response.body.items[i]['prkplceNm']
                     displayMarker(locPosition,message)
                 }
                 clusterer.addMarkers(markers);
@@ -233,7 +231,7 @@
         });
 
         var iwContent = message, // 인포윈도우에 표시할 내용
-            iwRemoveable = true;
+                iwRemoveable = true;
 
         // 인포윈도우를 생성합니다
         var infowindow = new kakao.maps.InfoWindow({
