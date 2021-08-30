@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="/css/font.css">
     <title>어따히지</title>
     <style>
+        #head p{position: absolute;
+            width: 180px;
+            height: 43px;
+            left: 97px;
+            top: 35px;
+
+            font-family: Do Hyeon;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 20px;
+            line-height: 25px;
+            text-align: center;
+            letter-spacing: -0.02em;
+
+            color: #000000;}
         #parking_lot {position: absolute;
             width: 361px;
             height: 118px;
@@ -28,7 +43,22 @@
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
             border-radius: 7px;
         }
-        #fee {position: absolute;
+        #using p {
+            position: absolute;
+            left: 11.73%;
+            right: 12%;
+            top: 37.22%;
+            bottom: 58.09%;
+
+            font-family: Do Hyeon;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 40px;
+            line-height: 50px;
+            text-align: center;
+            color: black;z-index:1;}
+
+        #fee .detail{position: absolute;
             width: 361px;
             height: 103px;
             left: 7px;
@@ -36,7 +66,24 @@
             background: rgba(255, 255, 255, 0.1);
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
             border-radius: 7px;}
-        #possible {position: absolute;
+        #fee p {
+            position: absolute;
+            width: 68px;
+            height: 18px;
+            left: 21px;
+            top: 353px;
+
+            font-family: "Do Hyeon";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 18px;
+            text-align: center;
+
+            color: #000000;
+        }
+        #possible .detail{
+            position: absolute;
             width: 361px;
             height: 170px;
             left: 7px;
@@ -44,17 +91,92 @@
             background: rgba(255, 255, 255, 0.1);
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
             border-radius: 7px;}
+
+        #possible p{
+            position: absolute;
+            width: 99px;
+            height: 18px;
+            left: 21px;
+            top: 490px;
+
+            font-family: "Do Hyeon";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 17px;
+            line-height: 18px;
+            text-align: center;
+
+            color: #000000;
+        }
+        #foot p{
+            position: absolute;
+            width: 137px;
+            height: 16px;
+            left: 119px;
+            top: 707px;
+
+            font-family: "Do Hyeon";
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 16px;
+            text-align: center;
+
+            color: #808080;
+        }
+        #foot .button{
+            position: absolute;
+            width: 135px;
+            height: 35px;
+            left: 120px;
+            top: 748px;
+
+            background: #6D92E3;
+            border: 1px solid #597CC8;
+            box-sizing: border-box;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 7px;
+        }
+        #foot .button p{
+            position: absolute;
+            width: 115px;
+            height: 19px;
+            left: 130px;
+            top: 757px;
+
+            font-family: Do Hyeon;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 15px;
+            line-height: 19px;
+            /* identical to box height */
+            text-align: center;
+
+            color: black;
+            z-index:1
+        }
     </style>
 
 </head>
 <body>
 <center>
-    <div id="head"></div>
+    <div id="head"><p>임성규님의 공유 주차장</p></div>
     <div id="parking_lot"></div>
-    <div id="using"></div>
-    <div id="fee"></div>
-    <div id="possible"></div>
-    <div id="foot"></div>
+    <div id="using">
+        <p>주차 이용</p>
+    </div>
+    <div id="fee">
+        <p>주차 요금</p>
+        <div class="detail"></div>
+    </div>
+    <div id="possible">
+        <p>이용가능 차량</p>
+        <div class="detail"></div>
+    </div>
+    <div id="foot">
+        <p>업데이트 2021-07-31</p>
+        <div class="button"><p>최신 정보 알려주기</p></div>
+    </div>
 
 </center>
 
