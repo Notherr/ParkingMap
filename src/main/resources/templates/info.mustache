@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="/css/font.css">
     <title>어따히지</title>
     <style>
-        #head p{position: absolute;
+        #head .name{position: absolute;
             width: 180px;
-            height: 43px;
+            height: 25px;
             left: 50%;
             top: 35px;
             margin-left:-90px;
@@ -23,6 +23,24 @@
             letter-spacing: -0.02em;
 
             color: #000000;}
+        #head .category{
+            position: absolute;
+            width: 20px;
+            height: 11px;
+            left: 50%;
+            top: 67px;
+            margin-left:-10px;
+
+            font-family: Do Hyeon;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 10px;
+            line-height: 11px;
+            /* identical to box height */
+            text-align: center;
+
+            color: #808080;
+        }
         #parking_lot {position: absolute;
             width: 360px;
             height: 118px;
@@ -154,42 +172,46 @@
         }
         #libraries .share {
             position: absolute;
-            width: 26px;
-            height: 24px;
+            width: 40px;
+            height: 40px;
             left: 40%;
-            top: 95px;
-            margin-left:-13px;
+            top: 87px;
+            margin-left:-20px;
         }
         #libraries .refactor {
             position: absolute;
-            width: 26px;
-            height: 24px;
+            width: 40px;
+            height: 40px;
             left: 47%;
-            top: 95px;
-            margin-left:-13px;
+            top: 87px;
+            margin-left:-20px;
         }
         #libraries .star {
             position: absolute;
-            width: 26px;
-            height: 24px;
+            width: 40px;
+            height: 40px;
             left: 54%;
-            top: 95px;
-            margin-left:-13px;
+            top: 87px;
+            margin-left:-20px;
         }
         #libraries .navi {
             position: absolute;
-            width: 26px;
-            height: 24px;
+            width: 40px;
+            height: 40px;
             left: 60%;
-            top: 95px;
-            margin-left:-13px;
+            top: 87px;
+            margin-left:-20px;
+
         }
     </style>
 
 </head>
 <body>
 <center>
-    <div id="head"><p>임성규님의 공유 주차장</p></div>
+    <div id="head">
+        <p class="name">임성규님의 공유 주차장</p>
+        <p class="category">공유</p>
+    </div>
     <div id="libraries">
         <img class="share" src="images/share.png"/>
         <img class="refactor" src="images/refactor.png" />
