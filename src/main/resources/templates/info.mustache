@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="/css/font.css">
     <title>어따히지</title>
     <style>
+        .back img {
+            position: absolute;
+            width: 16px;
+            height: 31px;
+            left: 38%;
+            top: 30px;
+            margin-left: -8px
+        }
         #head .name{position: absolute;
             width: 180px;
             height: 25px;
@@ -21,7 +29,6 @@
             line-height: 25px;
             text-align: center;
             letter-spacing: -0.02em;
-
             color: #000000;}
         #head .category{
             position: absolute;
@@ -207,10 +214,14 @@
 
 </head>
 <body>
-<center>
     <div id="head">
         <p class="name">임성규님의 공유 주차장</p>
         <p class="category">공유</p>
+    </div>
+    <div class="back">
+        <a href="/">
+            <img src="images/back_button.png" />
+        </a>
     </div>
     <div id="libraries">
         <img class="share" src="images/share.png"/>
@@ -234,9 +245,6 @@
         <p>업데이트 2021-07-31</p>
         <div class="button">최신 정보 알려주기</div>
     </div>
-
-</center>
-
 </body>
 </html>
 
