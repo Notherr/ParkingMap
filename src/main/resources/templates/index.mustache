@@ -146,12 +146,20 @@
                 //console.log(JSON.parse(data));
                 var data = JSON.parse(data); // 반환된 데이터 형식을 다시 JSON형태로 바꿔주니 데이터 값 조회가 잘 된다.
                 // console.log(data.response.body.items[0]) // {} 는 .으로 [](배열)은 []으로 조회
-                console.log(data.response.body.items.length)
+                // console.log(data.response.body.items.length)
 
                 for(let i = 0; i<data.response.body.items.length; i++) {
                     var locPosition = new kakao.maps.LatLng(parseFloat(data.response.body.items[i]['latitude']), parseFloat(data.response.body.items[i]['longitude'])),
                             message = data.response.body.items[i]['prkplceNm']
+                    var info = data.response.body.items[i]['parkingchrgeInfo']
+                    var content = '<div class = "label">info</div>';
                     displayMarker(locPosition,message)
+                    var customOverlay = new kakao.maps.CustomOverlay({
+                        position: locPosition,
+                        content: content
+                    });
+                    customOverlay.setMap(map);
+
                 }
                 clusterer.addMarkers(markers);
 
