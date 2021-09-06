@@ -23,4 +23,6 @@ public class IndexController {
     @GetMapping("/info")
     public String info() {return "info";}
 
+    @GetMapping("/using")
+    public String using() {return "using";}
 }
