@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 @RestController
-public class RestApiController {
+public class DataRestApiController {
 
     @GetMapping("/apitest3")
     public String callapihttp(){
