@@ -1,18 +1,23 @@
 package com.loopy.web;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.loopy.web.dto.WantRequestDto;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Required;
+import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @RestController
 public class GatewayRestApiController {
 
-    private static long startup = System.currentTimeMillis();
-    private static long cnt = 0;
-
-    @GetMapping("/counter")
-    public String getCounter () {
-        cnt++;
-        return String.valueOf(cnt);
+    @PostMapping("/want")
+    public String postWant(@RequestBody WantRequestDto requestDto) {
+        System.out.println(requestDto);
+        if (requestDto.getValue().equals("1")){
+            return "ok";
+        }
+        else{
+            return "no";
+        }
     }
 }

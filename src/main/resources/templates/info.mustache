@@ -83,7 +83,6 @@
             vertical-align:middle;
             color: #fff;z-index:1;
         }
-
         #fee .detail{position: absolute;
             width: 360px;
             height: 103px;
@@ -232,11 +231,9 @@
         <img class="navi" src="images/navi.png"/>
     </div>
     <div id="parking_lot"></div>
-    <a href="using">
-        <div id="using">
-            주차 이용
-        </div>
-    </a>
+    <div id="using">
+        주차 이용
+    </div>
     <div id="fee">
         <p>주차 요금</p>
         <div class="detail"></div>
@@ -249,6 +246,56 @@
         <p>업데이트 2021-07-31</p>
         <div class="button">최신 정보 알려주기</div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#using").click(function(){
+                $.ajax({
+                    url:'http://localhost:8080/want',
+                    type:'POST',
+                    contentType:'application/json',
+                    data: JSON.stringify({"value":"1"}),
+                    success: function(){
+                        console.log("request success");
+                        window.location.href = '/using';
+
+                    },
+                    error:function(jqXHR) {
+                        console.log("request failed");
+                    }
+                });
+            });
+        });
+        /*
+        var main = {
+            init : function () {
+                var _this = this;
+                $('#using').on('click', function (){
+                    _this.want();
+                });
+            },
+            want : function () {
+                var data = {
+                    value: $('1').val()
+                };
+                $.ajax({
+                    type:'POST',
+                    url: '/want',
+                    dataType: 'json',
+                    contentType:'application/json; charset=utf-8',
+                    data: JSON.stringify(data)
+                }).done(function() {
+                    console.log('1');
+                    window.location.href = '/using';
+                }).fail(function (error) {
+                    alert(JSON.stringify(error));
+                });
+            }
+        };
+        main.init();
+
+         */
+    </script>
 </body>
 </html>
 
