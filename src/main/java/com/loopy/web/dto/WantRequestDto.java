@@ -7,9 +7,4 @@ import lombok.*;
 public class WantRequestDto {
     private String value;
 
-
-
-    public String getValue() {
-        return value;
-    }
 }

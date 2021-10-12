@@ -253,6 +253,8 @@
                 $.ajax({
                     url:'http://localhost:8080/want',
                     type:'POST',
+                    //contentType : 보내는 데이터 형식
+                    //dataType : 받는 데이터 형식
                     contentType:'application/json',
                     data: JSON.stringify({"value":"1"}),
                     success: function(){
