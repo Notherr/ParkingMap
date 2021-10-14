@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class GatewayRestApiController {
 
+    String val = "0";
     //@RequestMapping(value="/want", method={RequestMethod.GET, RequestMethod.POST})
     @RequestMapping("/want")
     public String postWant(WantRequestDto requestDto) {
-        if (requestDto.getValue().equals("1")){
-            return "ok";
-        }
-        else{
-            return "no";
-        }
+        return requestDto.getValue();
+
     }
 
 }
