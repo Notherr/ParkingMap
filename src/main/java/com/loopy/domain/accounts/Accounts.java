@@ -1,8 +1,7 @@
-package com.loopy.domain.user;
+package com.loopy.domain.accounts;
 
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,7 +9,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-public class User {
+public class Accounts {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +26,7 @@ public class User {
 
     //???
     @Builder
-    public User(String name, String email, String picture) {
+    public Accounts(String name, String email, String picture) {
         this.name = name;
         this.email = email;
         this.picture = picture;

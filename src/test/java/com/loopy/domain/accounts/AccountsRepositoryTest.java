@@ -1,4 +1,4 @@
-package com.loopy.domain.user;
+package com.loopy.domain.accounts;
 
 
 import org.junit.After;
@@ -14,14 +14,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserRepositoryTest {
+public class AccountsRepositoryTest {
 
     @Autowired
-    UserRepository userRepository;
+    AccountsRepository accountsRepository;
 
     @After
     public void cleanup() {
-        userRepository.deleteAll();
+        accountsRepository.deleteAll();
     }
 
     @Test
@@ -31,17 +31,17 @@ public class UserRepositoryTest {
         String email = "96x60812@gmail.com";
         String picture = "https:/sdfsdf/sdf.jpg";
 
-        userRepository.save(User.builder()
+        accountsRepository.save(Accounts.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)
                 .build());
 
         //when
-        List<User> userList = userRepository.findAll();
+        List<Accounts> userList = accountsRepository.findAll();
 
         //then
-        User user = userList.get(0);
+        Accounts user = userList.get(0);
         assertThat(user.getName()).isEqualTo(name);
         assertThat(user.getEmail()).isEqualTo(email);
         assertThat(user.getPicture()).isEqualTo(picture);
