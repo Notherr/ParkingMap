@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <!-- css link -->
+    <link rel="stylesheet" href="/css/font.css">
+    <title>어따히지</title>
+
+</head>
+<body>
+<center>
+<div id="test">
+
+</div>
+
+</center>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    $( document ).ready(function() { // document의 ready 메소드를 이용하여 html 요소와 javascript 동적 실행의 순서를 보장해준다. 즉 이 안의 코드는 문서가 모두 로드되고 실행된다.
+        $.ajax({
+            url:'http://localhost:8080/want',
+            //url:'http://ec2-3-35-94-87.ap-northeast-2.compute.amazonaws.com:8080/want',
+            type:'GET',
+            dataType:'text', // 리턴해주는 타입을 지정해줘야함
+            beforeSend:function(jqXHR) {
+                console.log("requesting ajax..");
+            },// 서버 요청 전 호출 되는 함수 return false; 일 경우 요청 중단
+            success: function(data) {
+                console.log(data);
+
+            },// 요청 완료 시
+            error:function(jqXHR) {
+                console.log("request failed");
+            }// 요청 실패.
+        });
+    });
+</script>
+</body>
+</html>
+
+
