@@ -24,6 +24,7 @@ public class Account {
     @Column(nullable = false)
     private String email;
 
+    @Column(nullable = true)
     @Lob @Basic(fetch = FetchType.EAGER)
     private String profileImage;
 
