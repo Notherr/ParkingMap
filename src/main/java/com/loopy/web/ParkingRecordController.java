@@ -1,6 +1,8 @@
 package com.loopy.web;
 
 import com.loopy.domain.parkingrecord.ParkingRecord;
+
+
 import com.loopy.service.ParkingRecordService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -33,8 +35,9 @@ public class ParkingRecordController {
     @PostMapping("/api_v1/parking_record")
     public ResponseEntity<?> saveParkingRecord(@RequestBody ParkingRecordDTO parkingRecordDTO) {
         Long accountId = parkingRecordDTO.getAccountId();
+        Long parkingLotId = parkingRecordDTO.getParkingLotId();
         LocalDateTime startTime = LocalDateTime.now();
-        parkingRecordService.saveInitParkingRecord(accountId, startTime);
+        parkingRecordService.saveInitParkingRecord(accountId, parkingLotId, startTime);
 
         return ResponseEntity.ok().body("parking record save");
     }
@@ -43,5 +46,6 @@ public class ParkingRecordController {
     static class ParkingRecordDTO {
 
         private Long accountId;
+        private Long parkingLotId;
     }
 }
