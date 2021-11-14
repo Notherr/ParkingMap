@@ -1,5 +1,7 @@
-package com.loopy.domain.account;
+package com.loopy.serbvice;
 
+import com.loopy.domain.account.Account;
+import com.loopy.domain.account.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

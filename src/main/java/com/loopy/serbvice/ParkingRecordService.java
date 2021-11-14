@@ -1,7 +1,9 @@
-package com.loopy.domain.parkingrecord;
+package com.loopy.serbvice;
 
 import com.loopy.domain.account.Account;
 import com.loopy.domain.account.AccountRepository;
+import com.loopy.domain.parkingrecord.ParkingRecord;
+import com.loopy.domain.parkingrecord.ParkingRecordRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
