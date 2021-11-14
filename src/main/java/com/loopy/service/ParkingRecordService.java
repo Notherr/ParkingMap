@@ -1,4 +1,4 @@
-package com.loopy.serbvice;
+package com.loopy.service;
 
 import com.loopy.domain.account.Account;
 import com.loopy.domain.account.AccountRepository;

@@ -1,6 +1,6 @@
 package com.loopy.web;
 
-import com.loopy.serbvice.AccountService;
+import com.loopy.service.AccountService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

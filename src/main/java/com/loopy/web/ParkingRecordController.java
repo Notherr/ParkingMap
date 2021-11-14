@@ -1,7 +1,7 @@
 package com.loopy.web;
 
 import com.loopy.domain.parkingrecord.ParkingRecord;
-import com.loopy.serbvice.ParkingRecordService;
+import com.loopy.service.ParkingRecordService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
