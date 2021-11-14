@@ -2,6 +2,7 @@ package com.loopy.domain.parkingrecord;
 
 import com.loopy.domain.account.Account;
 import com.loopy.domain.account.AccountRepository;
+import com.loopy.service.ParkingRecordService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

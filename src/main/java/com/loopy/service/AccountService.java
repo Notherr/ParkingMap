@@ -1,10 +1,10 @@
-package com.loopy.domain.account;
+package com.loopy.service;
 
+import com.loopy.domain.account.Account;
+import com.loopy.domain.account.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.NoSuchElementException;
 
 @Slf4j
 @Service
