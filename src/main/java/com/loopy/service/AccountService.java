@@ -19,7 +19,7 @@ public class AccountService {
         if (accountRepository.findByNameAndEmail(name, email) == null) {
             Account new_account = Account.builder()
                     .email(email)
-                    .name(name)
+                    .nickname(name)
                     .build();
             accountRepository.save(new_account);
 
