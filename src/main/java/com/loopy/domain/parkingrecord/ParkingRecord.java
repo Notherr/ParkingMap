@@ -32,6 +32,7 @@ public class ParkingRecord implements Serializable {
     @JoinColumn(name = "p_id", referencedColumnName = "id")
     private ParkingLot parkingLot;
 
+    @Column(nullable = false)
     private LocalDateTime startTime;
 
     private LocalDateTime endTime;

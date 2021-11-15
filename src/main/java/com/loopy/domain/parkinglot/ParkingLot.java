@@ -7,24 +7,31 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
 @Data
 @NoArgsConstructor
+@Entity
 public class ParkingLot {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
 
+    @Column(nullable = false)
+    private String pName;
+
+    @Column(nullable = false)
     private String type;
 
-    private Integer basic_time;
+    private Integer basicTime;
 
-    private Integer basic_change;
+    private Integer basicChange;
+
+    @Column(nullable = false)
+    private String openDay;
 
     @Embedded
     private Address address;
