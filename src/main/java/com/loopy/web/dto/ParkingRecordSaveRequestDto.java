@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 public class ParkingRecordSaveRequestDto {
     private Long accountId;
     private Long parkingLotId;
-    private LocalDateTime startTime;
+    private LocalDateTime startTime = LocalDateTime.now();
 
     private AccountRepository accountRepository;
     private ParkingLotRepository parkingLotRepository;
@@ -40,16 +40,10 @@ public class ParkingRecordSaveRequestDto {
     }
 
     public RecordCache toRecordCacheEntity() {
-        Account account = accountRepository.findById(accountId).get();
-        ParkingLot parkingLot = parkingLotRepository.findById(parkingLotId).get();
-
-        ParkingRecord parkingRecord = ParkingRecord.builder()
-                .account(account)
-                .parkingLot(parkingLot)
-                .startTime(startTime).build();
 
         return RecordCache.builder()
-                .parkingRecord(parkingRecord)
+                .parkinglotId(parkingLotId)
+                .accountId(accountId)
                 .using(true).build();
     }
 
