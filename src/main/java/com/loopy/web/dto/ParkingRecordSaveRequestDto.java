@@ -9,6 +9,8 @@ import com.loopy.domain.parkingrecord.recordCache.RecordCache;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 
@@ -17,17 +19,17 @@ import java.time.LocalDateTime;
 public class ParkingRecordSaveRequestDto {
     private Long accountId;
     private Long parkingLotId;
-    private LocalDateTime startTime = LocalDateTime.now();
-
-    private AccountRepository accountRepository;
-    private ParkingLotRepository parkingLotRepository;
+    private final LocalDateTime startTime = LocalDateTime.now();
 
     @Builder
-    public ParkingRecordSaveRequestDto(Long accountId, Long parkingLotId, LocalDateTime startTime) {
+    public ParkingRecordSaveRequestDto(Long accountId, Long parkingLotId) {
         this.accountId = accountId;
         this.parkingLotId = parkingLotId;
-        this.startTime = startTime;
     }
+
+    /**
+    private  AccountRepository accountRepository;
+    private ParkingLotRepository parkingLotRepository;
 
     public ParkingRecord toParkingRecordEntity() {
         Account account = accountRepository.findById(accountId).get();
@@ -46,8 +48,5 @@ public class ParkingRecordSaveRequestDto {
                 .accountId(accountId)
                 .using(true).build();
     }
-
-
-
-
+     **/
 }

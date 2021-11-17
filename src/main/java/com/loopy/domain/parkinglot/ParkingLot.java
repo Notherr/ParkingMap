@@ -28,7 +28,7 @@ public class ParkingLot {
 
     private Integer basicTime;
 
-    private Integer basicChange;
+    private Integer basicCharge;
 
     @Column(nullable = false)
     private String openDay;
