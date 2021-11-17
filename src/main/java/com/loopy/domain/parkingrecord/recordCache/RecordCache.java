@@ -23,13 +23,6 @@ public class RecordCache implements Serializable {
     @GeneratedValue
     private Long id;
 
-    /**
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "r_id", referencedColumnName = "id")
-    private ParkingRecord parkingRecord;
-    **/
-
     @Column(nullable = false)
     private boolean using;
 
