@@ -16,15 +16,15 @@ public class AccountController {
 
     @PostMapping("/api_v1/account")
     public ResponseEntity<?> saveAccount(@RequestBody AccountDTO_v1 accountDTO_v1) {
-        System.out.println(accountDTO_v1.getEmail() + " " + accountDTO_v1.getName());
-        accountService.processNewAccount(accountDTO_v1.getName(), accountDTO_v1.getEmail());
+        System.out.println(accountDTO_v1.getEmail() + " " + accountDTO_v1.getNickname());
+        accountService.processNewAccount(accountDTO_v1.getNickname(), accountDTO_v1.getEmail());
         return ResponseEntity.ok().body("New Account created");
     }
 
 
     @Data
     static class AccountDTO_v1 {
-        private String name;
+        private String nickname;
         private String email;
     }
 

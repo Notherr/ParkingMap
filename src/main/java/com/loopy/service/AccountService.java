@@ -14,12 +14,12 @@ public class AccountService {
     private final AccountRepository accountRepository;
 
 
-    public void processNewAccount(String name, String email) {
+    public void processNewAccount(String nickname, String email) {
 
-        if (accountRepository.findByNameAndEmail(name, email) == null) {
+        if (accountRepository.findByNicknameAndEmail(nickname, email) == null) {
             Account new_account = Account.builder()
                     .email(email)
-                    .nickname(name)
+                    .nickname(nickname)
                     .build();
             accountRepository.save(new_account);
 
