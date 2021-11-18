@@ -20,7 +20,7 @@ import java.io.Serializable;
 public class RecordCache implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)

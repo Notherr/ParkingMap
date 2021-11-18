@@ -9,9 +9,6 @@ import com.loopy.domain.parkingrecord.recordCache.RecordCache;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDateTime;
 
 @Getter

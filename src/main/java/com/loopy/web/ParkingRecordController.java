@@ -36,6 +36,6 @@ public class ParkingRecordController {
     public ResponseEntity<?> saveParkingRecord(@RequestBody ParkingRecordSaveRequestDto requestDto) {
         parkingRecordService.save(requestDto);
 
-        return ResponseEntity.ok().body("parking record save");
+        return ResponseEntity.ok().body(requestDto);
     }
 }
