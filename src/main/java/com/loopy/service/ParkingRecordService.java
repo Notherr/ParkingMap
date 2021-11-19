@@ -8,6 +8,7 @@ import com.loopy.domain.parkingrecord.ParkingRecord;
 import com.loopy.domain.parkingrecord.ParkingRecordRepository;
 import com.loopy.domain.parkingrecord.recordCache.RecordCache;
 import com.loopy.domain.parkingrecord.recordCache.RecordCacheRepository;
+import com.loopy.web.dto.EndTimeUpdateRequestDto;
 import com.loopy.web.dto.ParkingRecordSaveRequestDto;
 import com.loopy.web.dto.UsingSignalResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -55,6 +56,20 @@ public class ParkingRecordService {
 
         } catch (NoSuchElementException exception) {
             log.warn("not exist account id");
+            return;
+        }
+    }
+
+    @Transactional
+    public void update(Long p_id, EndTimeUpdateRequestDto requestDto) {
+        try {
+            ParkingRecord parkingRecord = parkingRecordRepository.findByParkinglotId(p_id);
+            parkingRecord.update(requestDto.getEndTime());
+
+            log.info("service is ended at " + requestDto.getEndTime());
+
+        } catch (NoSuchElementException exception){
+            log.warn("not exist parkinglot id");
             return;
         }
     }

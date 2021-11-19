@@ -4,9 +4,11 @@ import com.loopy.domain.parkingrecord.ParkingRecord;
 
 
 import com.loopy.service.ParkingRecordService;
+import com.loopy.web.dto.EndTimeUpdateRequestDto;
 import com.loopy.web.dto.ParkingRecordSaveRequestDto;
 import com.sun.net.httpserver.HttpsServer;
 import lombok.RequiredArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,13 @@ public class ParkingRecordController {
     @PostMapping("/api_v1/parking_record")
     public ResponseEntity<?> saveParkingRecord(@RequestBody ParkingRecordSaveRequestDto requestDto) {
         parkingRecordService.save(requestDto);
+
+        return ResponseEntity.ok().body(requestDto);
+    }
+
+    @PutMapping("api_v1/parking_record_end/{p_id}")
+    public ResponseEntity<?> updateEndTime(@PathVariable Long p_id, @RequestBody EndTimeUpdateRequestDto requestDto) {
+        parkingRecordService.update(p_id, requestDto);
 
         return ResponseEntity.ok().body(requestDto);
     }
