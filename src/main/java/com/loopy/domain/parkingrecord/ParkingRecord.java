@@ -40,7 +40,8 @@ public class ParkingRecord implements Serializable {
 
     private Boolean isPayed;
 
-    public void update(LocalDateTime endTime) {
+    public void update(LocalDateTime endTime, int price) {
         this.endTime = endTime;
+        this.price = price;
     }
 }

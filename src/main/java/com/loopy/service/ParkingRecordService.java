@@ -15,6 +15,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 
 
@@ -41,6 +44,8 @@ public class ParkingRecordService {
 
             parkingRecordRepository.save(parkingRecord);
 
+            System.out.println(parkingRecord);
+
             RecordCache recordCache = RecordCache.builder()
                     .parkinglotId(requestDto.getParkingLotId())
                     .accountId(requestDto.getAccountId())
@@ -63,8 +68,15 @@ public class ParkingRecordService {
     @Transactional
     public void update(Long p_id, EndTimeUpdateRequestDto requestDto) {
         try {
+
+            ParkingLot parkingLot = parkingLotRepository.findById(p_id).get();
             ParkingRecord parkingRecord = parkingRecordRepository.findByParkinglotId(p_id);
-            parkingRecord.update(requestDto.getEndTime());
+
+            // ((endtime - starttime) / basictime) * bascircharge
+            Duration duration = Duration.between(parkingRecord.getStartTime(), parkingRecord.getEndTime());
+            int price = (int) (((duration.getSeconds()/60) / parkingLot.getBasicTime() ) * parkingLot.getBasicCharge());
+
+            parkingRecord.update(requestDto.getEndTime(), price);
 
             log.info("service is ended at " + requestDto.getEndTime());
 
@@ -73,6 +85,8 @@ public class ParkingRecordService {
             return;
         }
     }
+
+
 
     public ParkingRecord getParkingRecordById(Long id) {
         try {
