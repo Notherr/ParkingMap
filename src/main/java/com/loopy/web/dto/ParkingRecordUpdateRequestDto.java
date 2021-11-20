@@ -13,8 +13,14 @@ import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor
-public class EndTimeUpdateRequestDto {
+public class ParkingRecordUpdateRequestDto {
 
-    private LocalDateTime endTime = LocalDateTime.now();
+    private Long parkingLotId;
+    private final LocalDateTime endTime = LocalDateTime.now();
+
+    @Builder
+    public ParkingRecordUpdateRequestDto(Long parkingLotId) {
+        this.parkingLotId = parkingLotId;
+    }
 
 }

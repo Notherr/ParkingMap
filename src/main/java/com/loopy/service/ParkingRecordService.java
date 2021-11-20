@@ -8,7 +8,7 @@ import com.loopy.domain.parkingrecord.ParkingRecord;
 import com.loopy.domain.parkingrecord.ParkingRecordRepository;
 import com.loopy.domain.parkingrecord.recordCache.RecordCache;
 import com.loopy.domain.parkingrecord.recordCache.RecordCacheRepository;
-import com.loopy.web.dto.EndTimeUpdateRequestDto;
+import com.loopy.web.dto.ParkingRecordUpdateRequestDto;
 import com.loopy.web.dto.ParkingRecordSaveRequestDto;
 import com.loopy.web.dto.UsingSignalResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -63,10 +63,10 @@ public class ParkingRecordService {
     }
 
     @Transactional
-    public void update(Long p_id, EndTimeUpdateRequestDto requestDto) {
+    public void update(ParkingRecordUpdateRequestDto requestDto) {
         try {
 
-            ParkingLot parkingLot = parkingLotRepository.findById(p_id).get();
+            ParkingLot parkingLot = parkingLotRepository.findById(requestDto.getParkingLotId()).get();
             ParkingRecord parkingRecord = parkingRecordRepository.findByParkingLot(parkingLot);
 
             // ((endtime - starttime) / basictime) * bascircharge
