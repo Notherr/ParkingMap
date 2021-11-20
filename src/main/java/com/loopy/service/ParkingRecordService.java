@@ -43,8 +43,6 @@ public class ParkingRecordService {
 
             parkingRecordRepository.save(parkingRecord);
 
-            System.out.println(parkingRecord);
-
             RecordCache recordCache = RecordCache.builder()
                     .parkinglotId(requestDto.getParkingLotId())
                     .accountId(requestDto.getAccountId())
@@ -89,7 +87,8 @@ public class ParkingRecordService {
 
     public ParkingRecord getParkingRecordById(Long id) {
         try {
-            return parkingRecordRepository.findById(id).get();
+            ParkingRecord parkingRecord = parkingRecordRepository.findById(id).get();
+            return parkingRecord;
 
         } catch (NoSuchElementException exception) {
             log.warn("not exist parking record id");
@@ -102,7 +101,7 @@ public class ParkingRecordService {
             RecordCache recordCache = recordCacheRepository.findByParkinglotId(p_id);
             return new UsingSignalResponseDto(recordCache);
         } catch (NoSuchElementException exception) {
-            log.warn("not exist parking record id");
+            log.warn("not exist parking lot id");
             throw exception;
         }
     }
