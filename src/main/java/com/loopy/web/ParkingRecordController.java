@@ -42,7 +42,7 @@ public class ParkingRecordController {
     }
 
     @PutMapping("api_v1/parking_record_end/{p_id}")
-    public ResponseEntity<?> updateEndTime(@PathVariable Long p_id, @RequestBody EndTimeUpdateRequestDto requestDto) {
+    public ResponseEntity<?> updateParkingRecord(@PathVariable Long p_id, @RequestBody EndTimeUpdateRequestDto requestDto) {
         parkingRecordService.update(p_id, requestDto);
 
         return ResponseEntity.ok().body(requestDto);

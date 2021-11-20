@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 
 
@@ -70,7 +69,7 @@ public class ParkingRecordService {
         try {
 
             ParkingLot parkingLot = parkingLotRepository.findById(p_id).get();
-            ParkingRecord parkingRecord = parkingRecordRepository.findByParkinglotId(p_id);
+            ParkingRecord parkingRecord = parkingRecordRepository.findByParkingLot(parkingLot);
 
             // ((endtime - starttime) / basictime) * bascircharge
             Duration duration = Duration.between(parkingRecord.getStartTime(), parkingRecord.getEndTime());
@@ -90,8 +89,8 @@ public class ParkingRecordService {
 
     public ParkingRecord getParkingRecordById(Long id) {
         try {
-            RecordCache recordCache = recordCacheRepository.findById(id).get();
-            return parkingRecordRepository.findById(recordCache.getId()).get();
+            return parkingRecordRepository.findById(id).get();
+
         } catch (NoSuchElementException exception) {
             log.warn("not exist parking record id");
             throw exception;

@@ -17,8 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@RedisHash(value = "parkingRecord")
-public class ParkingRecord implements Serializable {
+public class ParkingRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
