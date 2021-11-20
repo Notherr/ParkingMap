@@ -52,8 +52,9 @@
         }
         #parking_lot {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 0.9fr 2.1fr;
             grid-template-rows: 1fr 1fr 1fr;
+            align-items: center;
             position: absolute;
             width: 360px;
             height: 118px;
@@ -63,6 +64,13 @@
             background: rgba(255, 255, 255, 0.05);
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
             border-radius: 7px;
+        }
+        #parking_lot > *{
+            margin: 6px 15px;
+        }
+        #parking_lot > .label {
+            color: #9c9c9c;
+            font: bold;
         }
         #using {
             position: absolute;
@@ -114,7 +122,7 @@
 
             color: #000000;
         }
-        #possible .detail{
+        #hours .detail{
             position: absolute;
             width: 360px;
             height: 170px;
@@ -125,7 +133,7 @@
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
             border-radius: 7px;}
 
-        #possible p{
+        #hours p{
             position: absolute;
             width: 98px;
             height: 18px;
@@ -141,6 +149,19 @@
             text-align: center;
 
             color: #000000;
+        }
+        #hours > .detail {
+            display: grid;
+            grid-template-columns: 0.9fr 2.1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            align-items: center;
+        }
+        #hours .detail > *{
+            margin: 6px 15px;
+        }
+        #hours > .detail > .label {
+            color: #9c9c9c;
+            font: bold;
         }
         #foot p{
             position: absolute;
@@ -236,12 +257,12 @@
     <img class="navi" src="images/navi.png"/>
 </div>
 <div id="parking_lot">
-    <div id="time_label">운영 시간</div>
-    <div id="time" style="text-align: right"></div>
-    <div id="pos_label">위치</div>
-    <div id="pos" style="text-align: right"></div>
-    <div id="number_label">관리자 번호</div>
-    <div id="admin_number" style="text-align: right"></div>
+    <div class="label">운영 시간</div>
+    <div class="time" style="text-align: right"></div>
+    <div class="label">위치</div>
+    <div class="pos" style="text-align: right"></div>
+    <div class="label">관리자 번호</div>
+    <div class="admin_number" style="text-align: right"></div>
 </div>
 <div id="using">
     주차 이용
@@ -250,9 +271,16 @@
     <p>주차 요금</p>
     <div class="detail"></div>
 </div>
-<div id="possible">
-    <p>이용가능 차량</p>
-    <div class="detail"></div>
+<div id="hours">
+    <p>이용 시간</p>
+    <div class="detail">
+        <div class="label">평일</div>
+        <div class="weekday" style="text-align: right"></div>
+        <div class="label">토요일</div>
+        <div class="sat" style="text-align: right"></div>
+        <div class="label">공휴일</div>
+        <div class="weekend" style="text-align: right"></div>
+    </div>
 </div>
 <div id="foot">
     <p>업데이트 2021-07-31</p>
@@ -260,11 +288,6 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
-    async function parseData(data){
-        return new Promise(resolve => {
-            resolve(JSON.parse(data))
-        })
-    }
     $(document).ready(function(){
         $.ajax({
             url:'http://localhost:8080/parkinglot_info?' +
@@ -276,9 +299,13 @@
                 console.log("requesting ajax..");
             },
             success: function(data) {
-                document.getElementById("time").innerHTML = JSON.parse(data).response.body.items[0]["operDay"];
-                document.getElementById("pos").innerHTML = JSON.parse(data).response.body.items[0]["lnmadr"];
-                document.getElementById("admin_number").innerHTML = JSON.parse(data).response.body.items[0]["phoneNumber"];
+                var res = JSON.parse(data).response.body.items[0]
+                document.getElementById("parking_lot").getElementsByClassName("time")[0].textContent = res["operDay"].replace(/\+/g, ", ");
+                document.getElementById("parking_lot").getElementsByClassName("pos")[0].textContent = res["lnmadr"];
+                document.getElementById("parking_lot").getElementsByClassName("admin_number")[0].textContent = res["phoneNumber"];
+                document.getElementById("hours").getElementsByClassName("weekday")[0].textContent = res["weekdayOperOpenHhmm"] + " ~ " + res["weekdayOperColseHhmm"];
+                document.getElementById("hours").getElementsByClassName("sat")[0].textContent = res["satOperOperOpenHhmm"] + " ~ " + res["satOperCloseHhmm"];
+                document.getElementById("hours").getElementsByClassName("weekend")[0].textContent = res["holidayOperOpenHhmm"] + " ~ " + res["holidayCloseOpenHhmm"];
                 console.log(JSON.parse(data));
                 $("#Area").html(data);
             },
