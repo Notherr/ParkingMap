@@ -12,7 +12,7 @@ public class UsingSignalResponseDto {
 
     public UsingSignalResponseDto(RecordCache recordCache) {
         this.using = recordCache.isUsing();
-        this.parkinglotId = recordCache.getParkinglotId();
+        this.parkinglotId = recordCache.getId();
         this.accountId = recordCache.getAccountId();
     }
 }

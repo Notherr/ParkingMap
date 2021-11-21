@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface RecordCacheRepository extends CrudRepository<RecordCache, Long> {
 
-    RecordCache findByParkinglotId (Long parkinglotId);
+//    RecordCache findByParkinglotId (Long parkinglotId);
 }

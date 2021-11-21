@@ -44,17 +44,19 @@ public class ParkingRecordService {
             parkingRecordRepository.save(parkingRecord);
 
             RecordCache recordCache = RecordCache.builder()
-                    .parkinglotId(requestDto.getParkingLotId())
-                    .accountId(requestDto.getAccountId())
-                    .using(true).build();
+                    .id(parkingLot.getId())
+                    .accountId(parkingRecord.getAccount().getId())
+                    .parkingRecordId(parkingRecord.getId())
+                    .using(true)
+                    .startTime(parkingRecord.getStartTime())
+                    .build();
 
             recordCacheRepository.save(recordCache);
 
-            /**
-            parkingRecordRepository.save(requestDto.toParkingRecordEntity());
-            recordCacheRepository.save(requestDto.toRecordCacheEntity());
-            **/
-            log.info("new parking record saved at " + requestDto.getStartTime());
+//            log.info("new parking record saved at " + requestDto.getStartTime());
+//            log.info("all records in cache :: ");
+//            recordCacheRepository.findAll().forEach(System.out::println);
+//            log.info(" ");
 
         } catch (NoSuchElementException exception) {
             log.warn("not exist account id");
@@ -66,14 +68,18 @@ public class ParkingRecordService {
     public void update(ParkingRecordUpdateRequestDto requestDto) {
         try {
 
-            ParkingLot parkingLot = parkingLotRepository.findById(requestDto.getParkingLotId()).get();
-            ParkingRecord parkingRecord = parkingRecordRepository.findByParkingLot(parkingLot);
+            RecordCache cache = recordCacheRepository.findById(requestDto.getParkingLotId()).get();
+            if (!cache.isUsing()) {
+                throw new RuntimeException();
+            }
+            ParkingLot parkingLot = parkingLotRepository.getOne(cache.getId());
+            ParkingRecord parkingRecord = parkingRecordRepository.findById(cache.getParkingRecordId()).get();
 
-            // ((endtime - starttime) / basictime) * bascircharge
-            Duration duration = Duration.between(parkingRecord.getStartTime(), parkingRecord.getEndTime());
+            Duration duration = Duration.between(cache.getStartTime(), requestDto.getEndTime());
             int price = (int) (((duration.getSeconds()/60) / parkingLot.getBasicTime() ) * parkingLot.getBasicCharge());
 
             parkingRecord.update(requestDto.getEndTime(), price);
+            recordCacheRepository.delete(cache);
 
             log.info("service is ended at " + requestDto.getEndTime());
 
@@ -98,7 +104,7 @@ public class ParkingRecordService {
 
     public UsingSignalResponseDto findById(Long p_id) {
         try {
-            RecordCache recordCache = recordCacheRepository.findByParkinglotId(p_id);
+            RecordCache recordCache = recordCacheRepository.findById(p_id).get();
             return new UsingSignalResponseDto(recordCache);
         } catch (NoSuchElementException exception) {
             log.warn("not exist parking lot id");
