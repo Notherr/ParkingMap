@@ -8,12 +8,15 @@ import com.loopy.domain.parkingrecord.ParkingRecord;
 import com.loopy.domain.parkingrecord.ParkingRecordRepository;
 import com.loopy.domain.parkingrecord.recordCache.RecordCache;
 import com.loopy.domain.parkingrecord.recordCache.RecordCacheRepository;
+import com.loopy.web.dto.ParkingRecordUpdateRequestDto;
 import com.loopy.web.dto.ParkingRecordSaveRequestDto;
 import com.loopy.web.dto.UsingSignalResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.Duration;
 import java.util.NoSuchElementException;
 
 
@@ -59,10 +62,34 @@ public class ParkingRecordService {
         }
     }
 
+    @Transactional
+    public void update(ParkingRecordUpdateRequestDto requestDto) {
+        try {
+
+            ParkingLot parkingLot = parkingLotRepository.findById(requestDto.getParkingLotId()).get();
+            ParkingRecord parkingRecord = parkingRecordRepository.findByParkingLot(parkingLot);
+
+            // ((endtime - starttime) / basictime) * bascircharge
+            Duration duration = Duration.between(parkingRecord.getStartTime(), parkingRecord.getEndTime());
+            int price = (int) (((duration.getSeconds()/60) / parkingLot.getBasicTime() ) * parkingLot.getBasicCharge());
+
+            parkingRecord.update(requestDto.getEndTime(), price);
+
+            log.info("service is ended at " + requestDto.getEndTime());
+
+        } catch (NoSuchElementException exception){
+            log.warn("not exist parkinglot id");
+            return;
+        }
+    }
+
+
+
     public ParkingRecord getParkingRecordById(Long id) {
         try {
-            RecordCache recordCache = recordCacheRepository.findById(id).get();
-            return parkingRecordRepository.findById(recordCache.getId()).get();
+            ParkingRecord parkingRecord = parkingRecordRepository.findById(id).get();
+            return parkingRecord;
+
         } catch (NoSuchElementException exception) {
             log.warn("not exist parking record id");
             throw exception;
@@ -74,7 +101,7 @@ public class ParkingRecordService {
             RecordCache recordCache = recordCacheRepository.findByParkinglotId(p_id);
             return new UsingSignalResponseDto(recordCache);
         } catch (NoSuchElementException exception) {
-            log.warn("not exist parking record id");
+            log.warn("not exist parking lot id");
             throw exception;
         }
     }

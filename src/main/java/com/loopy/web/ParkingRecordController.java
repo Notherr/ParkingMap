@@ -5,7 +5,7 @@ import com.loopy.domain.parkingrecord.ParkingRecord;
 
 import com.loopy.service.ParkingRecordService;
 import com.loopy.web.dto.ParkingRecordSaveRequestDto;
-import com.sun.net.httpserver.HttpsServer;
+import com.loopy.web.dto.ParkingRecordUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +35,13 @@ public class ParkingRecordController {
     @PostMapping("/api_v1/parking_record")
     public ResponseEntity<?> saveParkingRecord(@RequestBody ParkingRecordSaveRequestDto requestDto) {
         parkingRecordService.save(requestDto);
+
+        return ResponseEntity.ok().body(requestDto);
+    }
+
+    @PutMapping("api_v1/parking_record_end")
+    public ResponseEntity<?> updateParkingRecord(@RequestBody ParkingRecordUpdateRequestDto requestDto) {
+        parkingRecordService.update(requestDto);
 
         return ResponseEntity.ok().body(requestDto);
     }

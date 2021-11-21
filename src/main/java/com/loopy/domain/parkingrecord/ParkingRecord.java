@@ -17,8 +17,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@RedisHash(value = "parkingRecord")
-public class ParkingRecord implements Serializable {
+public class ParkingRecord {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,4 +38,9 @@ public class ParkingRecord implements Serializable {
     private Integer price;
 
     private Boolean isPayed;
+
+    public void update(LocalDateTime endTime, int price) {
+        this.endTime = endTime;
+        this.price = price;
+    }
 }
