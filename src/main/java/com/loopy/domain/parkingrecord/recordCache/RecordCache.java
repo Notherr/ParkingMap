@@ -1,7 +1,6 @@
 package com.loopy.domain.parkingrecord.recordCache;
 
-import com.loopy.domain.account.Account;
-import com.loopy.domain.parkingrecord.ParkingRecord;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
