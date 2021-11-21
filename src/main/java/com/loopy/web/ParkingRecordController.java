@@ -4,14 +4,14 @@ import com.loopy.domain.parkingrecord.ParkingRecord;
 
 
 import com.loopy.service.ParkingRecordService;
-import lombok.Data;
+import com.loopy.web.dto.ParkingRecordSaveRequestDto;
+import com.sun.net.httpserver.HttpsServer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 
 @Controller
@@ -33,19 +33,9 @@ public class ParkingRecordController {
     }
 
     @PostMapping("/api_v1/parking_record")
-    public ResponseEntity<?> saveParkingRecord(@RequestBody ParkingRecordDTO parkingRecordDTO) {
-        Long accountId = parkingRecordDTO.getAccountId();
-        Long parkingLotId = parkingRecordDTO.getParkingLotId();
-        LocalDateTime startTime = LocalDateTime.now();
-        parkingRecordService.saveInitParkingRecord(accountId, parkingLotId, startTime);
+    public ResponseEntity<?> saveParkingRecord(@RequestBody ParkingRecordSaveRequestDto requestDto) {
+        parkingRecordService.save(requestDto);
 
-        return ResponseEntity.ok().body("parking record save");
-    }
-
-    @Data
-    static class ParkingRecordDTO {
-
-        private Long accountId;
-        private Long parkingLotId;
+        return ResponseEntity.ok().body(requestDto);
     }
 }

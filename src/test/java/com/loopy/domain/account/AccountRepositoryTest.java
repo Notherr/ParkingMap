@@ -27,11 +27,11 @@ public class AccountRepositoryTest {
     @Test
     public void 유저정보불러오기() {
         //given
-        String name = "limseongkyu";
+        String nickname = "limseongkyu";
         String email = "96x60812@gmail.com";
         String picture = "https:/sdfsdf/sdf.jpg";
         accountRepository.save(Account.builder()
-                .name(name)
+                .nickname(nickname)
                 .email(email)
                 .profileImage(picture)
                 .build());
@@ -41,7 +41,7 @@ public class AccountRepositoryTest {
 
         //then
         Account user = userList.get(0);
-        assertThat(user.getName()).isEqualTo(name);
+        assertThat(user.getNickname()).isEqualTo(nickname);
         assertThat(user.getEmail()).isEqualTo(email);
         assertThat(user.getProfileImage()).isEqualTo(picture);
     }
