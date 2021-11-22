@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <!-- css link -->
     <link rel="stylesheet" href="/css/font.css">
-    <title>어따히지</title>
+    <title>어따하지</title>
     <style>
         .back img {
             position: absolute;
@@ -86,7 +86,7 @@
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
             border-radius: 7px;
 
-            font-family: Do Hyeon;
+            font-family: "Do Hyeon";
             font-style: normal;
             font-weight: normal;
             font-size: 40px;
@@ -96,7 +96,12 @@
             vertical-align:middle;
             color: #fff;z-index:1;
         }
-        #fee .detail{position: absolute;
+        #fee .detail {
+            display: grid;
+            grid-template-columns: 0.9fr 2.1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            align-items: center;
+            position: absolute;
             width: 360px;
             height: 103px;
             left: 50%;
@@ -122,7 +127,18 @@
 
             color: #000000;
         }
+        #fee .detail > *{
+            margin: 4px 15px;
+        }
+        #fee > .detail > .label {
+            color: #9c9c9c;
+            font: bold;
+        }
         #hours .detail{
+            display: grid;
+            grid-template-columns: 0.9fr 2.1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            align-items: center;
             position: absolute;
             width: 360px;
             height: 170px;
@@ -133,7 +149,7 @@
             box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
             border-radius: 7px;}
 
-        #hours p{
+        #hours p {
             position: absolute;
             width: 98px;
             height: 18px;
@@ -150,12 +166,6 @@
 
             color: #000000;
         }
-        #hours > .detail {
-            display: grid;
-            grid-template-columns: 0.9fr 2.1fr;
-            grid-template-rows: 1fr 1fr 1fr;
-            align-items: center;
-        }
         #hours .detail > *{
             margin: 6px 15px;
         }
@@ -163,7 +173,7 @@
             color: #9c9c9c;
             font: bold;
         }
-        #foot p{
+        #foot p {
             position: absolute;
             width: 136px;
             height: 16px;
@@ -269,7 +279,14 @@
 </div>
 <div id="fee">
     <p>주차 요금</p>
-    <div class="detail"></div>
+    <div class="detail">
+        <div class="label">기본 요금</div>
+        <div class="basic_charge" style="text-align: right"></div>
+        <div class="label">추가 요금</div>
+        <div class="additional_charge" style="text-align: right"></div>
+        <div class="label">할증 요금</div>
+        <div class="premium_charge" style="text-align: right"></div>
+    </div>
 </div>
 <div id="hours">
     <p>이용 시간</p>
@@ -306,6 +323,9 @@
                 document.getElementById("hours").getElementsByClassName("weekday")[0].textContent = res["weekdayOperOpenHhmm"] + " ~ " + res["weekdayOperColseHhmm"];
                 document.getElementById("hours").getElementsByClassName("sat")[0].textContent = res["satOperOperOpenHhmm"] + " ~ " + res["satOperCloseHhmm"];
                 document.getElementById("hours").getElementsByClassName("weekend")[0].textContent = res["holidayOperOpenHhmm"] + " ~ " + res["holidayCloseOpenHhmm"];
+                document.getElementById("fee").getElementsByClassName("basic_charge")[0].textContent = (res["basicTime"] === "" || res["basicCharge"] === "" || res["basicCharge"] === "0") ? "무료" : res["basicTime"] + "분 / " + res["basicCharge"];
+                document.getElementById("fee").getElementsByClassName("additional_charge")[0].textContent = (res["addUnitCharge"] === "" || res["addUnitTime"] === "") ? "X" : res["addUnitTime"] + "분 / " + res["addUnitCharge"];
+                document.getElementById("fee").getElementsByClassName("premium_charge")[0].textContent = "X"
                 console.log(JSON.parse(data));
                 $("#Area").html(data);
             },
@@ -313,7 +333,10 @@
                 console.log("request failed");
             }
         });
-        $("#using").click(function(){
+        $("#using").click(() => {
+            location.href="/using";
+        })
+        /*$("#using").click(function(){
             $.ajax({
                 url:'http://localhost:8080/want',
                 //url:'http://ec2-3-35-94-87.ap-northeast-2.compute.amazonaws.com:8080/want',
@@ -331,7 +354,7 @@
                     console.log("request failed");
                 }
             });
-        });
+        }); */
     });
     /*
     var main = {
