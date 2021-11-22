@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/css/font.css">
+  <title>어따하지</title>
+  <style>
+  .wrap {
+    position: relative;
+    width: 375px;
+    height: 812px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+  .header {
+    position: absolute;
+    width: 361px;
+    height: 70px;
+    left: 7px;
+    top: 40px;
+
+    background: #597CC8;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+  }
+  .header > p {
+    position: absolute;
+    left: 10.8%;
+    right: 10.8%;
+    top: 17.14%;
+    bottom: 32.86%;
+
+    font-family: "Do Hyeon";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+
+    color: #FFFFFF;
+    margin: 0px;
+  }
+  .header img {
+    position: absolute;
+    width: 16px;
+    height: 24px;
+    left: 25px;
+    top: 22px;
+    mix-blend-mode: darken;
+  }
+  .charge {
+    position: absolute;
+    width: 361px;
+    height: 70px;
+    left: 7px;
+    top: 135px;
+
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+  }
+  .charge__label {
+    position: absolute;
+    width: 88px;
+    height: 29px;
+    left: 23px;
+    top: 159px;
+
+    font-family: "Do Hyeon";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 23px;
+    line-height: 29px;
+    /* identical to box height */
+
+    text-align: left;
+
+    color: #597CC8;
+  }
+  .charge-detail {
+    position: absolute;
+    width: 361px;
+    height: 308px;
+    left: 7px;
+    top: 235px;
+
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 7px;
+  }
+  .charge-detail > .label {
+    color: #9c9c9c;
+    font: bold;
+  }
+  .charge-detail__label {
+    position: absolute;
+    width: 141px;
+    height: 29px;
+    left: 23px;
+    top: 256px;
+
+    font-family: Do Hyeon;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 23px;
+    line-height: 29px;
+    /* identical to box height */
+
+    text-align: left;
+
+    color: #597CC8;
+  }
+  .fee {
+    position: absolute;
+    width: 95px;
+    height: 33px;
+    left: 249px;
+    top: 154px;
+
+    font-family: "Archivo";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 33px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #000000;
+  }
+  .pay-naver {
+    position: absolute;
+    width: 361px;
+    height: 65px;
+    left: 8px;
+    top: 575px;
+
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 7px;
+  }
+  .pay-kakao {
+    position: absolute;
+    width: 361px;
+    height: 65px;
+    left: 7px;
+    top: 675px;
+
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 7px;
+  }
+  
+  </style>
+</head>
+<body>
+  <center>
+    <div class="wrap">
+      <div class="header">
+        <p>
+          어따하지
+        </p>
+        <img onclick="location.href='/';" src="images/back_button.png" />
+      </div>
+      <div class="charge">
+      
+      </div>
+      <div class="charge__label">이용 금액</div>
+      <div class="charge-detail">
+        {{! <div class="label">이용 시간</div>
+        <div class="time" style="text-align: right">3시간</div>
+        <div class="label">기본 요금</div>
+        <div class="basic-charge" style="text-align: right">~~~~</div>
+        <div class="label">추가 요금</div>
+        <div class="additional-charge" style="text-align: right">~~~~~</div>
+        <div/>
+        <div/> }}
+      </div>
+      <div class="charge-detail__label">이용 상세 내역</div>
+      <div class="fee">
+        5000원
+      </div>
+      <div class="pay-naver">
+      Naver Pay
+      </div>
+      <div class="pay-kakao">
+      Kakao Pay
+      </div>
+    </div>
+  </center>
+  <script>
+    
+  </script>
+</body>  
