@@ -1,7 +1,6 @@
 package com.loopy.domain.parkingrecord.recordCache;
 
-import com.loopy.domain.account.Account;
-import com.loopy.domain.parkingrecord.ParkingRecord;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,6 +9,7 @@ import org.springframework.data.redis.core.RedisHash;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -20,16 +20,18 @@ import java.io.Serializable;
 public class RecordCache implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "parkingLotId")
     private Long id;
 
     @Column(nullable = false)
     private boolean using;
 
     @Column(nullable = false)
-    private Long parkinglotId;
+    private LocalDateTime startTime;
 
     @Column(nullable = false)
     private Long accountId;
 
+    @Column(name = "parkingRecordId")
+    private Long parkingRecordId;
 }

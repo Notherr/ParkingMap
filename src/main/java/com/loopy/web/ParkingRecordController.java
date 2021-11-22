@@ -39,7 +39,7 @@ public class ParkingRecordController {
         return ResponseEntity.ok().body(requestDto);
     }
 
-    @PutMapping("api_v1/parking_record_end")
+    @PatchMapping("api_v1/parking_record_end")
     public ResponseEntity<?> updateParkingRecord(@RequestBody ParkingRecordUpdateRequestDto requestDto) {
         parkingRecordService.update(requestDto);
 
