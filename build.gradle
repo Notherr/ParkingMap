@@ -30,13 +30,25 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-mustache')
     compile('org.springframework.boot:spring-boot-starter-web')
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
     testCompile('org.springframework.boot:spring-boot-starter-test')
 
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.session:spring-session-jdbc')
     compile('com.h2database:h2')
+    compile('org.mariadb.jdbc:mariadb-java-client')
+
+    implementation('org.springframework.boot:spring-boot-starter-cache')
+    //spring-data-redis
+    implementation('org.springframework.boot:spring-boot-starter-data-redis')
+    //embedded-redis
+    implementation('it.ozimov:embedded-redis:0.7.2')
 
 
     compile('javax.servlet:jstl')
     compile("org.apache.tomcat.embed:tomcat-embed-jasper")
+}
+test{
+    useJUnitPlatform()
 }

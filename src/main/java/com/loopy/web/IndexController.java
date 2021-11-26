@@ -25,4 +25,7 @@ public class IndexController {
 
     @GetMapping("/using")
     public String using() {return "using";}
+
+    @GetMapping("/payment")
+    public String payment() {return "payment";}
 }

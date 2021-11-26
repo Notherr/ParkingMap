@@ -19,12 +19,15 @@ public class Account {
     private Long id;
 
     @Column(nullable = false)
-    private String name;
+    private String nickname;
 
     @Column(nullable = false)
     private String email;
 
     @Lob @Basic(fetch = FetchType.EAGER)
     private String profileImage;
+
+    @Column(nullable = false)
+    private String role;
 
 }
