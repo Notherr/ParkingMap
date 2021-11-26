@@ -6,12 +6,12 @@ import lombok.Getter;
 @Getter
 public class UsingSignalResponseDto {
 
-    private Boolean using;
+    private Boolean use;
     private Long parkinglotId;
     private Long accountId;
 
     public UsingSignalResponseDto(RecordCache recordCache) {
-        this.using = recordCache.isUsing();
+        this.use = recordCache.isUse();
         this.parkinglotId = recordCache.getId();
         this.accountId = recordCache.getAccountId();
     }
