@@ -17,7 +17,7 @@ public class GatewayRestApiController {
 
     @GetMapping("/api_v1/checking/{p_id}")
     public Boolean findById (@PathVariable Long p_id) {
-        return parkingRecordService.findById(p_id).getUsing();
+        return parkingRecordService.findById(p_id).getUsed();
     }
 
 
