@@ -24,7 +24,7 @@ public class RecordCache implements Serializable {
     private Long id;
 
     @Column(nullable = false)
-    private boolean using;
+    private boolean use;
 
     @Column(nullable = false)
     private LocalDateTime startTime;
