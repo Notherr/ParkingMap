@@ -47,7 +47,7 @@ public class ParkingRecordService {
                     .id(parkingLot.getId())
                     .accountId(parkingRecord.getAccount().getId())
                     .parkingRecordId(parkingRecord.getId())
-                    .use(true)
+                    .used(true)
                     .startTime(parkingRecord.getStartTime())
                     .build();
 
@@ -69,7 +69,7 @@ public class ParkingRecordService {
         try {
 
             RecordCache cache = recordCacheRepository.findById(requestDto.getParkingLotId()).get();
-            if (!cache.isUse()) {
+            if (!cache.isUsed()) {
                 throw new RuntimeException();
             }
             ParkingLot parkingLot = parkingLotRepository.getOne(cache.getId());
