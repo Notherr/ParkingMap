@@ -24,7 +24,7 @@ public class ParkingLot {
     private String pName;
 
     @Column(nullable = false)
-    private String type;
+    private String parkingLotType;
 
     private Integer basicTime;
 
