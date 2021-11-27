@@ -104,6 +104,16 @@ public class ParkingRecordService {
         }
     }
 
+    public RecordCache getRecordCacheById(Long id) {
+        try {
+            RecordCache cache = recordCacheRepository.findById(id).get();
+            return cache;
+        } catch (NoSuchElementException exception) {
+            log.warn("not exist record cache id");
+            throw exception;
+        }
+    }
+
     public UsingSignalResponseDto findById(Long p_id) {
         try {
             RecordCache recordCache = recordCacheRepository.findById(p_id).get();
