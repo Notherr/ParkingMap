@@ -3,6 +3,7 @@ package com.loopy.web;
 import com.loopy.domain.parkingrecord.ParkingRecord;
 
 
+import com.loopy.domain.parkingrecord.recordCache.RecordCache;
 import com.loopy.service.ParkingRecordService;
 import com.loopy.web.dto.ParkingRecordSaveRequestDto;
 import com.loopy.web.dto.ParkingRecordUpdateRequestDto;
@@ -44,5 +45,17 @@ public class ParkingRecordController {
         parkingRecordService.update(requestDto);
 
         return ResponseEntity.ok().body(requestDto);
+    }
+
+    @GetMapping("/api_v1/record_cache")
+    public ResponseEntity<?> getRecordCache(@RequestParam Long id) {
+        try {
+            RecordCache cache = parkingRecordService.getRecordCacheById(id);
+            return ResponseEntity.ok().body(
+                    "parkingLotId : " + cache.getParkingRecordId() + ", Used :  " + cache.isUsed()
+            );
+        } catch (NoSuchElementException exception){
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
     }
 }

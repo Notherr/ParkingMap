@@ -51,6 +51,8 @@ public class ParkingRecordService {
                     .startTime(parkingRecord.getStartTime())
                     .build();
 
+
+            System.out.println(recordCache);
             recordCacheRepository.save(recordCache);
 
 //            log.info("new parking record saved at " + requestDto.getStartTime());
@@ -98,6 +100,16 @@ public class ParkingRecordService {
 
         } catch (NoSuchElementException exception) {
             log.warn("not exist parking record id");
+            throw exception;
+        }
+    }
+
+    public RecordCache getRecordCacheById(Long id) {
+        try {
+            RecordCache cache = recordCacheRepository.findById(id).get();
+            return cache;
+        } catch (NoSuchElementException exception) {
+            log.warn("not exist record cache id");
             throw exception;
         }
     }
