@@ -114,7 +114,7 @@ public class ParkingRecordService {
         }
     }
 
-    public UsingSignalResponseDto findById(Long p_id) {
+    public UsingSignalResponseDto findByPId(Long p_id) {
         try {
             RecordCache recordCache = recordCacheRepository.findById(p_id).get();
             return new UsingSignalResponseDto(recordCache);
