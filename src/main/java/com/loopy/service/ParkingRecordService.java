@@ -51,6 +51,8 @@ public class ParkingRecordService {
                     .startTime(parkingRecord.getStartTime())
                     .build();
 
+
+            System.out.println(recordCache);
             recordCacheRepository.save(recordCache);
 
 //            log.info("new parking record saved at " + requestDto.getStartTime());
