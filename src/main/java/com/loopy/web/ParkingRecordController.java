@@ -52,18 +52,8 @@ public class ParkingRecordController {
         try {
             RecordCache cache = parkingRecordService.getRecordCacheById(id);
             return ResponseEntity.ok().body(
-                    "parkingLotId : " + cache.getId() + ", Used :  " + cache.isUsed()
+                    "parkingLotId : " + cache.getParkingRecordId() + ", Used :  " + cache.isUsed()
             );
-        } catch (NoSuchElementException exception){
-            return new ResponseEntity(HttpStatus.BAD_REQUEST);
-        }
-    }
-
-    @GetMapping("/api_v1/check")
-    public ResponseEntity<?> getUsed(@RequestParam Long id) {
-        try {
-            RecordCache cache = parkingRecordService.getRecordCacheById(id);
-            return ResponseEntity.ok(cache.isUsed());
         } catch (NoSuchElementException exception){
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
