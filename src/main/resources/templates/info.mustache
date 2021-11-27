@@ -307,8 +307,8 @@
 <script>
     $(document).ready(function(){
         $.ajax({
-            url:'http://localhost:8080/parkinglot_info?' +
-            //url:'http://ec2-3-37-183-92.ap-northeast-2.compute.amazonaws.com:8080/parkinglot_info?' +
+            //url:'http://localhost:8080/parkinglot_info?' +
+            url:'http://ec2-3-37-183-92.ap-northeast-2.compute.amazonaws.com:8080/parkinglot_info?' +
                     "latitude=" + localStorage.getItem("latitude") +
                     "&longitude=" + localStorage.getItem("longitude"),
             type:'GET',
@@ -336,8 +336,8 @@
         });
         $("#using").click(function(){
             $.ajax({
-                url:'http://localhost:8080/api_v1/parking_record',
-                //url:'ec2-3-37-183-92.ap-northeast-2.compute.amazonaws.com:8080/api_v1/parking_record',
+                //url:'http://localhost:8080/api_v1/parking_record',
+                url:'ec2-3-37-183-92.ap-northeast-2.compute.amazonaws.com:8080/api_v1/parking_record',
                 type:'POST',
                 contentType:'application/json',
                 data: JSON.stringify({"accountId":1, "parkingLotId":1}),
