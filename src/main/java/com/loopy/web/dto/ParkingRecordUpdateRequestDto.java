@@ -7,10 +7,12 @@ import com.loopy.domain.parkingrecord.ParkingRecordRepository;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.apache.tomcat.jni.Local;
 
 import java.time.LocalDateTime;
 
+@Setter
 @Getter
 @NoArgsConstructor
 public class ParkingRecordUpdateRequestDto {
