@@ -41,8 +41,7 @@ public class ParkingRecordController {
     }
 
     @PatchMapping("api_v1/parking_record_end")
-    public ResponseEntity<?> updateParkingRecord(@RequestParam Long p_id, ParkingRecordUpdateRequestDto requestDto) {
-        requestDto.setParkingLotId(p_id);
+    public ResponseEntity<?> updateParkingRecord(@RequestBody ParkingRecordUpdateRequestDto requestDto) {
         parkingRecordService.update(requestDto);
 
         return ResponseEntity.ok().body(requestDto);
