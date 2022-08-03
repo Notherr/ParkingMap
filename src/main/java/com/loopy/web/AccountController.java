@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/api_v1")
+@RequestMapping("/api-v1")
 public class AccountController {
 
     private final AccountService accountService;

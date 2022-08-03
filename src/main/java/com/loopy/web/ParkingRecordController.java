@@ -22,7 +22,7 @@ public class ParkingRecordController {
 
     private final ParkingRecordService parkingRecordService;
 
-    @GetMapping("/parking-record")
+    @GetMapping("/records")
     public ResponseEntity<?> getParkingRecord(@RequestParam Long id) {
         try {
             ParkingRecord record = parkingRecordService.getParkingRecordById(id);
@@ -34,14 +34,14 @@ public class ParkingRecordController {
         }
     }
 
-    @PostMapping("/parking-record")
+    @PostMapping("/records")
     public ResponseEntity<?> startParkingRecord(@RequestBody ParkingRecordSaveRequestDto requestDto) {
         parkingRecordService.start(requestDto);
 
         return ResponseEntity.ok().body(requestDto);
     }
 
-    @PatchMapping("/parking-record")
+    @PatchMapping("/records")
     public ResponseEntity<?> endParkingRecord(@RequestBody ParkingRecordUpdateRequestDto requestDto) {
         parkingRecordService.end(requestDto);
 

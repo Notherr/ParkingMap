@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api_v1")
+@RequestMapping("/api-v1")
 public class GatewayRestApiController {
 
     ParkingRecordService parkingRecordService;

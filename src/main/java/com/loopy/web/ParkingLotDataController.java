@@ -10,7 +10,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 @RestController
-@RequestMapping("/api_v1")
+@RequestMapping("/api-v1")
 public class ParkingLotDataController {
 
     @GetMapping("/parkinglot-data")
