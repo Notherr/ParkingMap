@@ -17,11 +17,12 @@ import java.util.NoSuchElementException;
 
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/api-v1")
 public class ParkingRecordController {
 
     private final ParkingRecordService parkingRecordService;
 
-    @GetMapping("/api_v1/parking_record")
+    @GetMapping("/parking-record")
     public ResponseEntity<?> getParkingRecord(@RequestParam Long id) {
         try {
             ParkingRecord record = parkingRecordService.getParkingRecordById(id);
@@ -33,22 +34,25 @@ public class ParkingRecordController {
         }
     }
 
-    @PostMapping("/api_v1/parking_record")
-    public ResponseEntity<?> saveParkingRecord(@RequestBody ParkingRecordSaveRequestDto requestDto) {
-        parkingRecordService.save(requestDto);
+    @PostMapping("/parking-record")
+    public ResponseEntity<?> startParkingRecord(@RequestBody ParkingRecordSaveRequestDto requestDto) {
+        parkingRecordService.start(requestDto);
 
         return ResponseEntity.ok().body(requestDto);
     }
 
-    @PatchMapping("api_v1/parking_record_end")
-    public ResponseEntity<?> updateParkingRecord(@RequestBody ParkingRecordUpdateRequestDto requestDto) {
-        parkingRecordService.update(requestDto);
+    @PatchMapping("/parking-record")
+    public ResponseEntity<?> endParkingRecord(@RequestBody ParkingRecordUpdateRequestDto requestDto) {
+        parkingRecordService.end(requestDto);
 
         return ResponseEntity.ok().body(requestDto);
     }
 
-    @GetMapping("/api_v1/record_cache")
+    @GetMapping("/record-cache")
     public ResponseEntity<?> getRecordCache(@RequestParam Long id) {
+        /*
+        recordCache id로 기록된 주차장의 id와 used 컬럼을 반환합니다.
+         */
         try {
             RecordCache cache = parkingRecordService.getRecordCacheById(id);
             return ResponseEntity.ok().body(
@@ -59,8 +63,11 @@ public class ParkingRecordController {
         }
     }
 
-    @GetMapping("/api_v1/check")
+    @GetMapping("/check")
     public ResponseEntity<?> getUsed(@RequestParam Long id) {
+        /*
+        recordCache id로 used 컬럼 값을 반환합니다.
+         */
         try {
             RecordCache cache = parkingRecordService.getRecordCacheById(id);
             return ResponseEntity.ok(cache.isUsed());

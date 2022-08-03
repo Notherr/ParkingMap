@@ -31,7 +31,7 @@ public class ParkingRecordService {
     private final ParkingLotRepository parkingLotRepository;
 
     @Transactional
-    public void save(ParkingRecordSaveRequestDto requestDto) {
+    public void start(ParkingRecordSaveRequestDto requestDto) {
         try {
             Account account = accountRepository.findById(requestDto.getAccountId()).get();
             ParkingLot parkingLot = parkingLotRepository.findById(requestDto.getParkingLotId()).get();
@@ -67,7 +67,7 @@ public class ParkingRecordService {
     }
 
     @Transactional
-    public void update(ParkingRecordUpdateRequestDto requestDto) {
+    public void end(ParkingRecordUpdateRequestDto requestDto) {
         try {
 
             RecordCache cache = recordCacheRepository.findById(requestDto.getParkingLotId()).get();
@@ -114,7 +114,7 @@ public class ParkingRecordService {
         }
     }
 
-    public UsingSignalResponseDto findByPId(Long p_id) {
+    public UsingSignalResponseDto getUsed(Long p_id) {
         try {
             RecordCache recordCache = recordCacheRepository.findById(p_id).get();
             return new UsingSignalResponseDto(recordCache);
